@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diploma Notes Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial;
+      background:#f4f6fb;
+    }
+
+    .header{
+      background:linear-gradient(90deg,#1e88e5,#1565c0);
+      color:white;
+      padding:18px;
+      text-align:center;
+    }
+
+    .subtext{
+      font-size:14px;
+      opacity:0.9;
+    }
+
+    .container{
+      padding:20px;
+      text-align:center;
+    }
+
+    .card{
+      display:inline-block;
+      background:white;
+      padding:15px 20px;
+      margin:10px;
+      border-radius:12px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+      cursor:pointer;
+      min-width:220px;
+      transition:0.2s;
+    }
+
+    .card:hover{
+      transform:scale(1.05);
+    }
+
+    .titleBar{
+      background:#2e7d32;
+      color:white;
+      padding:10px;
+      border-radius:8px;
+      margin:20px 0 10px 0;
+      font-weight:bold;
+    }
+
+    .titleBar2{
+      background:#6a1b9a;
+      color:white;
+      padding:10px;
+      border-radius:8px;
+      margin:20px 0 10px 0;
+      font-weight:bold;
+    }
+
+    iframe{
+      width:95%;
+      height:600px;
+      border:none;
+      border-radius:10px;
+    }
+
+    button{
+      padding:10px 18px;
+      margin:10px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+    }
+
+    .back{background:#444;color:white;}
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h2>Diploma Notes</h2>
+  <div class="subtext">By BIT, Birgunj Students</div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="container">
+  <h3>Select Engineering Program</h3>
+
+  <div class="card" onclick="openBranch('Engineering All')">Engineering All</div>
+  <div class="card" onclick="openBranch('Electrical and Electronics Engineering')">Electrical & Electronics Engineering</div>
+  <div class="card" onclick="openBranch('Electrical Engineering')">Electrical Engineering</div>
+  <div class="card" onclick="openBranch('Civil Engineering')">Civil Engineering</div>
+  <div class="card" onclick="openBranch('Computer Engineering')">Computer Engineering</div>
+  <div class="card" onclick="openBranch('Mechanical Engineering')">Mechanical Engineering</div>
+</div>
+
+<!-- ENGINEERING ALL PAGE -->
+<div id="allPage" class="container" style="display:none;">
+
+  <h3 id="branchTitle"></h3>
+
+  <!-- SEM 1 -->
+  <div class="titleBar">First Semester (I/I)</div>
+
+  <div class="card" onclick="openPDF('AN')">Applied Nepali</div>
+  <div class="card" onclick="openPDF('AE')">Applied English</div>
+  <div class="card" onclick="openPDF('MATH1')">Engineering Mathematics I</div>
+  <div class="card" onclick="openPDF('PHY1')">Engineering Physics I</div>
+  <div class="card" onclick="openPDF('CHEM1')">Engineering Chemistry I</div>
+  <div class="card" onclick="openPDF('COMP')">Computer Application</div>
+
+  <!-- SEM 2 -->
+  <div class="titleBar2">Second Semester (I/II)</div>
+
+  <div class="card" onclick="openPDF('MATH2')">Engineering Mathematics II</div>
+  <div class="card" onclick="openPDF('PHY2')">Engineering Physics II</div>
+  <div class="card" onclick="openPDF('CHEM2')">Engineering Chemistry II</div>
+  <div class="card" onclick="openPDF('MECH')">Applied Mechanics</div>
+
+  <br>
+  <button class="back" onclick="goHome()">⬅ Back</button>
+</div>
+
+<!-- OTHER BRANCHES -->
+<div id="otherPage" class="container" style="display:none;">
+  <h3 id="otherTitle"></h3>
+
+  <div id="subjects"></div>
+
+  <br>
+  <button class="back" onclick="backHome()">⬅ Back</button>
+</div>
+
+<!-- PDF VIEW -->
+<div id="pdfPage" class="container" style="display:none;">
+  <h3 id="pdfTitle"></h3>
+
+  <iframe id="pdfFrame"></iframe>
+
+  <br>
+  <button class="back" onclick="backFromPDF()">⬅ Back</button>
+</div>
+
+<script>
+
+let currentBranch="";
+let currentCode="";
+
+// HOME → BRANCH
+function openBranch(b){
+  currentBranch=b;
+
+  document.getElementById("home").style.display="none";
+
+  if(b==="Engineering All"){
+    document.getElementById("allPage").style.display="block";
+    document.getElementById("branchTitle").innerText=b;
+  }
+  else{
+    document.getElementById("otherPage").style.display="block";
+    document.getElementById("otherTitle").innerText=b;
+
+    let html="";
+    for(let i=1;i<=6;i++){
+      html += `<div class="card" onclick="openPDF('SUB${i}')">Subject ${i}</div>`;
+    }
+
+    document.getElementById("subjects").innerHTML=html;
+  }
+}
+
+// PDF OPEN (ENGINEERING ALL + OTHER BRANCHES)
+function openPDF(code){
+
+  currentCode=code;
+
+  document.getElementById("allPage").style.display="none";
+  document.getElementById("otherPage").style.display="none";
+  document.getElementById("pdfPage").style.display="block";
+
+  document.getElementById("pdfTitle").innerText =
+    currentBranch + " - " + code;
+
+  // 🔴 SEPARATE GOOGLE DRIVE IDS (EASY TO REPLACE)
+  let pdfMap = {
+
+    AN:"ID_AN",
+    AE:"ID_AE",
+    MATH1:"ID_MATH1",
+    PHY1:"ID_PHY1",
+    CHEM1:"ID_CHEM1",
+    COMP:"ID_COMP",
+
+    MATH2:"ID_MATH2",
+    PHY2:"ID_PHY2",
+    CHEM2:"ID_CHEM2",
+    MECH:"ID_MECH",
+
+    SUB1:"ID_SUB1",
+    SUB2:"ID_SUB2",
+    SUB3:"ID_SUB3",
+    SUB4:"ID_SUB4",
+    SUB5:"ID_SUB5",
+    SUB6:"ID_SUB6"
+  };
+
+  let id = pdfMap[code];
+
+  document.getElementById("pdfFrame").src =
+    "https://drive.google.com/file/d/" + id + "/preview";
+}
+
+// BACK FUNCTIONS
+function goHome(){
+  document.getElementById("allPage").style.display="none";
+  document.getElementById("home").style.display="block";
+}
+
+function backHome(){
+  document.getElementById("otherPage").style.display="none";
+  document.getElementById("home").style.display="block";
+}
+
+function backFromPDF(){
+  document.getElementById("pdfPage").style.display="none";
+  document.getElementById("home").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
