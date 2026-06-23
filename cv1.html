@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mahamad Sahjad Ansari - CV</title>
+    <style>
+        /* Global reset & box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Page margins for print */
+        @page {
+            margin: 0.4in 0.4in 0.4in 0.4in;
+            size: A4;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #000;
+            background: #fff;
+            width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Main wrapper – uses full available width */
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .header h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        /* Photo – passport size (approx 2x2.2 inches) */
+        .photo {
+            display: inline-block;
+            width: 120px;
+            height: 150px;
+            border: 2px solid #222;
+            background: #f0f0f0;
+            overflow: hidden;
+            margin-bottom: 8px;
+            text-align: center;
+            line-height: 150px;
+            font-size: 11px;
+            color: #666;
+        }
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .contact {
+            font-size: 11.5px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .contact a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        /* Section headings */
+        h2 {
+            font-size: 15px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 3px;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        /* Table – completely fits inside page */
+        table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            font-size: 11px;
+            margin: 6px 0 12px 0;
+        }
+        th, td {
+            border: 1.5px solid #000;
+            padding: 5px 6px;
+            text-align: left;
+            vertical-align: middle;
+            word-break: break-word;
+        }
+        th {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+
+        /* Column width distribution (sums to 100%) */
+        .col-qual { width: 26%; }
+        .col-inst { width: 30%; }
+        .col-board { width: 18%; }
+        .col-year { width: 12%; }
+        .col-gpa { width: 14%; }
+
+        /* Lists */
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 4px 0 6px 0;
+        }
+        ul li {
+            margin-bottom: 3px;
+            font-size: 11.5px;
+        }
+
+        .declaration {
+            margin-top: 12px;
+            font-style: italic;
+        }
+        .signature {
+            margin-top: 18px;
+        }
+
+        /* Print-specific tweaks */
+        @media print {
+            body { font-size: 11.5px; }
+            .photo { width: 110px; height: 140px; line-height: 140px; }
+            h2 { font-size: 14px; }
+            table { font-size: 10.5px; }
+            ul li { font-size: 11px; }
+            .contact { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>MAHAMAD SAHJAD ANSARI</h1>
+        <!-- Replace src="photo.jpg" with your actual photo file name -->
+        <div class="photo">
+            <img src="photo.jpg" alt="Passport Photo" onerror="this.style.display='none'; this.parentElement.innerHTML='PP<br>Photo'">
+        </div>
+        <div class="contact">
+            <strong>Temporary Address:</strong> Birgunj-11, Shreepur, Parsa, Nepal &nbsp;|&nbsp;
+            <strong>Permanent:</strong> Dhobini Rural Municipality-5, Parsa, Nepal<br>
+            <strong>Phone:</strong> +977 9815200473 &nbsp;|&nbsp;
+            <strong>Email:</strong> sahjad2062@gmail.com
+        </div>
+    </div>
+
+    <h2>CAREER OBJECTIVE</h2>
+    <p>Motivated and hardworking final-semester Diploma in Electrical and Electronics Engineering student with over three years of practical experience in electrical wiring, generator operation, inverter installation, sound system setup, troubleshooting, and basic electronics repair. Seeking an opportunity in the electrical and electronics field where I can apply my technical knowledge and hands-on skills, contribute to organizational success, and continue developing my professional expertise.</p>
+
+    <h2>PERSONAL DETAILS</h2>
+    <p><strong>Date of Birth:</strong> 2062-01-01 &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Gender:</strong> Male &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Marital Status:</strong> Unmarried &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Nationality:</strong> Nepali</p>
+
+    <h2>ACADEMIC QUALIFICATION</h2>
+    <table>
+        <colgroup>
+            <col class="col-qual">
+            <col class="col-inst">
+            <col class="col-board">
+            <col class="col-year">
+            <col class="col-gpa">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Qualification</th>
+                <th>Institute</th>
+                <th>Board / University</th>
+                <th>Year</th>
+                <th>GPA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Diploma in Electrical and Electronics Engineering</td>
+                <td>Birgunj Institute of Technology</td>
+                <td>CTEVT</td>
+                <td>2080–2083</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>SEE</td>
+                <td>Tri-Juddha M.Pr.R.Ra. Secondary School</td>
+                <td>NEB</td>
+                <td>2079</td>
+                <td>2.60</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>PRACTICAL EXPERIENCE</h2>
+    <ul>
+        <li><strong>3 years</strong> of hands-on experience in electrical wiring, conduit installation, inverter setup, and electrical troubleshooting.</li>
+        <li>Experience in generator operation, electrical distribution, and temporary electrical installations for events and programs.</li>
+        <li>Setup sound system and adjust sound in events and programs, includes connection of stabilizers, audio mixers, amplifiers, microphones, speakers, horns, etc.</li>
+        <li>Basic electronics repair experience, including LED driver repair, fan winding repair, and rectifier circuit maintenance.</li>
+    </ul>
+
+    <h2>TECHNICAL SKILLS</h2>
+    <ul>
+    
+         <li>Motor control & maintenance.</li>
+         <li>Transformer Basic.</li>
+         <li>Electrical Wiring, Electrical Troubleshooting, Conduit Installation, Generator Operation, Inverter Installation, Sound System Setup, Amplifier &amp; Mixer Operation, LED Driver Repair, Basic Electronics Repair, Electrical Safety Practices</li>
+    </ul>
+
+    <h2>LANGUAGES</h2>
+    <p>Nepali, Hindi, English, Urdu</p>
+
+    <h2>DECLARATION</h2>
+    <p class="declaration">I hereby declare that the information provided above is true and correct to the best of my knowledge and belief.</p>
+
+    <div class="signature">
+        <p>_________________________<br>(Mahamad Sahjad Ansari)</p>
+    </div>
+
+</div>
+<!-- end container -->
+
+</body>
+</html>
